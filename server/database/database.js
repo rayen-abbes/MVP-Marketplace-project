@@ -4,7 +4,7 @@ let CONNECTION_URL = "mongodb://localhost:27017";
 
 mongoose.connect(CONNECTION_URL)
 
-const productSchema = mongoose.Schema({
+const productSchema = new mongoose.Schema({
     id:String,
     productName:{
         type:String,
@@ -16,35 +16,33 @@ const productSchema = mongoose.Schema({
     picture:String
 })
 
-let productDB = mongoose.model('product', productSchema)
+let productDB = mongoose.model('products', productSchema)
+
+let getAll =()=>{
+    return productDB.find({})
+}
 
 // Function to save data to the database
 let save = (data) =>{
-    let p = new product({
+    let p = new productDB({
         id:data.id,
         productName:data.productName,
         phoneNumber:data.phoneNumber,
         details:data.details,
         price:data.price,
-        picture:data.picUrl
+        picture:data.picture
     })
-    let query = p.save((error)=>{
+    p.save((error)=>{
         if (error){
             console.error(error);
         }
     })
-    return query;
+    
+    console.log(p);
+    return getAll();
+    
 }
 
-let get = ()=> {
-    let query = product.find({name:data},(error)=>{
-        if (error){
-            console.error(error)
-        }
-    })
-    return query.exec()
-}
 
-module.exports.getall = productDB.find;
+module.exports.getAll = getAll;
 module.exports.save = save;
-module.exports.get = get;

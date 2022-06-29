@@ -12,11 +12,19 @@ let port = 5000;
 
 // Testing get requests on /products
 app.get('/products',(req,res) => {
-    productDB.get(req.params)
+    productDB.getAll(res.params).then((data)=>{
+        res.send(data)
+    })
 })
 
 app.post('/addProduct',(req,res)=>{
-    productDB.save(req.data)
+    productDB.save(req.body)
+    .then((data)=>{
+        res.send(data)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
 })
 
 

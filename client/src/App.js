@@ -1,34 +1,57 @@
 import React from "react";
+import axios from "axios";
 
 
-const App =() =>{
-    
-    const elements = [
+class App extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={
+            data:[]
+        }
+    }
+    componentDidMount(){
+        axios("http://localhost:5000/products").then(res =>{
+            this.setState({
+                data:res.data
+            })
+        })
+    }
+    render(){
+        const elements = [
         
-        <div>
-            <h1 id="title">Marketplace</h1>
-        </div>
-    ]
-    /* 
-        * id
-        * productName
-        * details
-        * phoneNumber
-        * price
-        * picture
-    */
-    let content = (
-        <div>
-            <img class="image3" src={require('./images/test.png')} alt="" width="300" height="400">
-            </img>
-            <h2>Phone</h2>
-            <p>This phone is one of the best here</p>
-            <p>22 222 222</p>
-            <p>300 dt</p>
-        </div>
-    )
-    elements.push(content)
-    return elements;
-}
+            <div>
+                <h1 id="title">Marketplace</h1>
+            </div>
+        ]
+        /* 
+            * id
+            * productName
+            * details
+            * phoneNumber
+            * price
+            * picture
+        */
+        for (let i=0; i<this.state.data.length;i++){
+            let data = this.state.data[i]
+            if (data){
+                console.log(data)
+
+                let content = (
+                    <div>
+                        <img class="image3" src={require(`./images/${data.picture}`)} alt="" width="300" height="400">
+                        </img>
+                        <h2>{data.productName}</h2>
+                        <p>{data.details}</p>
+                        <p>{data.phoneNumber}</p>
+                        <p>{data.price}</p>
+                    </div>
+                )
+                elements.push(content)
+
+            }
+        }
+        return elements    
+    }
+}    
 
 export default App;
