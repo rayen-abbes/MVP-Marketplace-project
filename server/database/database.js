@@ -16,7 +16,7 @@ const productSchema = mongoose.Schema({
     picture:String
 })
 
-let product = mongoose.model('product', productSchema)
+let productDB = mongoose.model('product', productSchema)
 
 // Function to save data to the database
 let save = (data) =>{
@@ -45,5 +45,6 @@ let get = ()=> {
     return query.exec()
 }
 
+module.exports.getall = productDB.find;
 module.exports.save = save;
 module.exports.get = get;
