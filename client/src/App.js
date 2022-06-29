@@ -23,22 +23,14 @@ class App extends React.Component {
                 <h1 id="title">Marketplace</h1>
             </div>
         ]
-        /* 
-            * id
-            * productName
-            * details
-            * phoneNumber
-            * price
-            * picture
-        */
         for (let i=0; i<this.state.data.length;i++){
             let data = this.state.data[i]
             if (data){
                 console.log(data)
 
                 let content = (
-                    <div>
-                        <img class="image3" src={require(`./images/${data.picture}`)} alt="" width="300" height="400">
+                    <div class="float-child">
+                        <img class={`image${i}`} src={require(`./images/${data.picture}`)} alt="" width="300" height="400">
                         </img>
                         <h2>{data.productName}</h2>
                         <p>{data.details}</p>
@@ -50,7 +42,15 @@ class App extends React.Component {
 
             }
         }
-        return elements    
+        let add = (
+            <div class="float-child">
+                <div class="add-button-center">
+                    <a href='/add'><h1>+</h1></a>
+                </div>
+            </div>
+        )
+        elements.push(add)
+        return <div id="float-container">{elements}</div>    
     }
 }    
 
