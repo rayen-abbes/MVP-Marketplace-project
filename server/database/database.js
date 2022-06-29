@@ -35,3 +35,15 @@ let save = (data) =>{
     })
     return query;
 }
+
+let get = ()=> {
+    let query = product.find({name:data},(error)=>{
+        if (error){
+            console.error(error)
+        }
+    })
+    return query.exec()
+}
+
+module.exports.save = save;
+module.exports.get = get;
