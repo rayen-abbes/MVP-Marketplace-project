@@ -17,5 +17,5 @@ app.get('/products',(req,res) => {
 
 // listenning on port
 app.listen(port,()=>{
-    console.log('listening on port '+port)
+    console.log(`listening on port ${port}`)
 })

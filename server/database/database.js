@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-let CONNECTION_URL = "";
+let CONNECTION_URL = "mongodb://localhost:27017";
 
 mongoose.connect(CONNECTION_URL)
 
