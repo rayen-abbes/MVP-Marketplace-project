@@ -26,28 +26,34 @@ class App extends React.Component {
         for (let i=0; i<this.state.data.length;i++){
             let data = this.state.data[i]
             if (data){
-                console.log(data)
+                try{
 
-                let content = (
-                    <div class="float-child">
-                        <img class={`image${i}`} src={require(`./images/${data.picture}`)} alt="" width="300" height="400">
-                        </img>
-                        <h2>{data.productName}</h2>
-                        <p>{data.details}</p>
-                        <p>{data.phoneNumber}</p>
-                        <p>{data.price}</p>
-                    </div>
-                )
-                elements.push(content)
+                    let content = (
+                        <div class="float-child">
+                            <img class={`image${i}`} src={require(`./images/${data.picture}`)} alt="" width="300" height="400">
+                            </img>
+                            <h2>{data.productName}</h2>
+                            <p>{data.details}</p>
+                            <p>{data.phoneNumber}</p>
+                            <p>{data.price}</p>
+                        </div>
+                    )
+                    elements.push(content)
+                }
+                catch (err){
+                    console.log(data)
+                    console.log(err)
+                }
+                
 
             }
         }
         let add = (
             <div class="float-child">
                 <div class="add-button-center">
-                    <form method="post" enctype="multipart/form-data" action="/upload">
+                    <form method="post" action="http://localhost:5000/addProduct">
                         <p>Picture:</p>
-                        <input type="file" name="picture"></input>
+                        <input type="text" name="picture"></input>
                         <p>Name:</p>
                         <input type="text" name="productName"></input>
                         <p>Details:</p>

@@ -23,6 +23,7 @@ app.get('/products',(req,res) => {
 
 // Adding a product
 app.post('/addProduct',(req,res)=>{
+    console.log(req)
     productDB.save(req.body)
     .then((data)=>{
         res.send(data)
