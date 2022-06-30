@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+
 
 
 class App extends React.Component {
@@ -10,13 +10,12 @@ class App extends React.Component {
         }
     }
     componentDidMount(){
-        axios("http://localhost:5000/products").then(res =>{
-            this.setState({
-                data:res.data
-            })
-        })
-    }
+        fetch("http://localhost:5000/").then(res =>res.json()).then(data=>{
+            this.setState(data);
+        })}
     render(){
+       
+      
         const elements = [
         
             <div>
@@ -51,8 +50,8 @@ class App extends React.Component {
             }
         }
         let add = (
-            <div class="float-child">
-                <div class="add-button-center">
+            <div className="float-child">
+                <div className="add-button-center">
                     <form method="post" action="http://localhost:5000/addProduct">
                         <p>Picture:</p>
                         <input type="file" name="picture"></input>
@@ -71,6 +70,7 @@ class App extends React.Component {
         )
         elements.push(add)
         return <div id="float-container">{elements}</div>    
+        
     }
 }    
 

@@ -15,8 +15,8 @@ app.use(cors())
 let port = 5000;
 
 // Returns all products from database to be displayed
-app.get('/products',(req,res) => {
-    productDB.getAll(res.params).then((data)=>{
+app.get('/',(req,res) => {
+    productDB.getAll().then((data)=>{
         res.send(data)
     })
 })
