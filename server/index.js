@@ -27,6 +27,26 @@ app.post('/addProduct',(req,res)=>{
     })
 })
 
+app.put('/updateProduct',(req,res)=>{
+    let data = {
+        id:req.params.id,
+        productName:req.body.productName,
+        phoneNumber:req.body.phoneNumber,
+        details:req.body.details,
+        price:req.body.price,
+        picture:req.body.picture
+    }
+    mongoo.update(data).then(response =>{
+        res.send(response)
+    })
+ 
+})
+
+app.delete('/delete',(req,res)=>{
+    productDB.del(req.params.id)
+    .then(data => {res.send(data)})
+})
+
 
 // lnistenning on port
 app.listen(port,()=>{

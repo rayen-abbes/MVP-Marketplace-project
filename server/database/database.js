@@ -37,12 +37,28 @@ let save = (data) =>{
             console.error(error);
         }
     })
-    
-    console.log(p);
     return getAll();
+}
+
+let del =(data)=>{
+    productDB.deleteOne({id:data})
+    .catch(err =>{
+        console.log(err)
+    })
+    return getAll()
     
+}
+
+let update =(data)=>{
+    productDB.findByIdAndUpdate(data.id,data)
+    .catch(err =>{
+        console.log(err)
+    })
+    return getAll()
 }
 
 
 module.exports.getAll = getAll;
 module.exports.save = save;
+module.exports.del = del;
+module.exports.update = update;
