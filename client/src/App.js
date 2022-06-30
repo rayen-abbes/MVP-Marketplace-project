@@ -45,7 +45,19 @@ class App extends React.Component {
         let add = (
             <div class="float-child">
                 <div class="add-button-center">
-                    <a href='/add'><h1>+</h1></a>
+                    <form method="post" enctype="multipart/form-data" action="/upload">
+                        <p>Picture:</p>
+                        <input type="file" name="picture"></input>
+                        <p>Name:</p>
+                        <input type="text" name="productName"></input>
+                        <p>Details:</p>
+                        <input type="text" name="details"></input>
+                        <p>phone number:</p>
+                        <input type="text" name="productName"></input>
+                        <p>Prince:</p>
+                        <input type="text" name="productName"></input>
+                        <input type="submit" value="Submit"></input>
+                    </form>
                 </div>
             </div>
         )
