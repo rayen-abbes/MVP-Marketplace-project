@@ -55,7 +55,7 @@ class App extends React.Component {
                 <div class="add-button-center">
                     <form method="post" action="http://localhost:5000/addProduct">
                         <p>Picture:</p>
-                        <input type="text" name="picture"></input>
+                        <input type="file" name="picture"></input>
                         <p>Name:</p>
                         <input type="text" name="productName"></input>
                         <p>Details:</p>
