@@ -36,6 +36,8 @@ class App extends React.Component {
                             <p>{data.details}</p>
                             <p>{data.phoneNumber}</p>
                             <p>{data.price}</p>
+                            <button>update</button>
+                            <button>delete</button>
                         </div>
                     )
                     elements.push(content)
